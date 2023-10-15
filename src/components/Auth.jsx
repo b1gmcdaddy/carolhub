@@ -1,8 +1,7 @@
 import { auth, provider } from "../firebase-config.js";
 import { signInWithPopup } from "firebase/auth";
-import "../styles/Auth.css";
 import Cookies from "universal-cookie";
-
+import ParticleBg from "./ParticleBg.jsx";
 const cookies = new Cookies();
 
 export const Auth = ({ setIsAuth }) => {
@@ -16,9 +15,11 @@ export const Auth = ({ setIsAuth }) => {
     }
   };
   return (
-    <div className="auth">
-      <p> Sign In With Google To Continue </p>
-      <button onClick={signInWithGoogle}> Sign In With Google </button>
+    <div className="auth text-center">
+      <ParticleBg />
+      <p className="font-medium text-lg"> Sign In With Google To Continue </p>
+      <button onClick={signInWithGoogle} className="bg-green-900 text-white mt-3
+      w-48 h-12 rounded-lg font-medium text-lg"> Sign In With Google </button>
     </div>
   );
 };

@@ -9,7 +9,6 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-
 import "../styles/Chat.css";
 
 export const Chat = ({ room }) => {
