@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
+
 
 function ParticleBg() {
+    const [isLightMode, setIsLightMode] = useState(false);
 
     async function loadParticles(main){
         await loadFull(main);
     }
+
   return (
+    <div>
     <Particles 
         id='tsparticles'
         init={loadParticles}
@@ -21,13 +27,35 @@ function ParticleBg() {
                 },
             },
             fpsLimit: 120,
+            interactivity: {
+                events: {
+                    onClick: {
+                        enable: true,
+                        mode: "push",
+                    },
+                    onHover: {
+                        enable: true,
+                        mode: "repulse",
+                    },
+                    resize: true,
+                },
+                modes: {
+                    push: {
+                        quantity: 4,
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4,
+                    },
+                },
+            },
            
             particles: {
                 color: {
-                    value: "#ffff",
+                    value: isLightMode ? "#ffffff" : "#ffffff",
                 },
                 links: {
-                    color: "#ffa31a",
+                    color: !isLightMode ? "#ffa31a" : "#ffffff",
                     distance: 150,
                     enable: true,
                     opacity: 0.8,
@@ -46,7 +74,7 @@ function ParticleBg() {
                 number: {
                     density: {
                         enable: true,
-                        area: 800,
+                        area: 400,
                     },
                     value: 35,
                 },
@@ -63,7 +91,12 @@ function ParticleBg() {
             detectRetina: true,
         }}
     />
+    <FontAwesomeIcon icon={faLightbulb} onClick={() => setIsLightMode(!isLightMode)}
+    size='2xl' title='Light/Dark Mode' className={`cursor-pointer fixed bottom-6 left-6 ${
+        isLightMode ? 'text-white hover:text-hub-color' : 'text-hub-color hover:text-white'
+    }`}/>
+    </div>
   )
 }
 
-export default ParticleBg
+export default ParticleBg;

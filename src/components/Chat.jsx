@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
-export const Chat = ({ room, setIsInChat }) => {
+export const Chat = ({ room, setIsInChat, nickname }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesRef = collection(db, "messages");
@@ -42,7 +42,7 @@ export const Chat = ({ room, setIsInChat }) => {
     await addDoc(messagesRef, {
       text: newMessage,
       createdAt: serverTimestamp(),
-      user: auth.currentUser.displayName,
+      user: nickname || "anonymous",
       userPhotoURL: auth.currentUser.photoURL,
       room,
     });

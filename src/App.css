@@ -26,23 +26,22 @@ body {
 }
 
 .room input {
-  width: 200px;
+  width: 250px;
   height: 30px;
   border: 2px solid #3b5998;
   border-radius: 6px;
   padding-left: 5px;
-  font-size: 16px;
   text-align: center;
   margin: 5px;
 }
 .room button {
-  width: 200px;
+  width: 250px;
   height: 40px;
   border: none;
   border-radius: 6px;
   padding-left: 5px;
   font-size: 20px;
   text-align: center;
-  margin: 5px;
+  margin: 10px;
   cursor: pointer;
 }

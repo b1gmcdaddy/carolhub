@@ -12,6 +12,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
   const [isInChat, setIsInChat] = useState(null);
   const [room, setRoom] = useState("");
+  const [nickname, setNickname] = useState("");
 
   if (!isAuth) {
     return (
@@ -27,12 +28,21 @@ function App() {
 
   return (
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
-      <ParticleBg />
       {!isInChat ? (
-        <div className="room bg-custom-bg4 p-8 shadow-xl shadow-orange-500/50">
+        <div className="room bg-custom-bg4 p-8 shadow-xl shadow-orange-500/50 
+        rounded-xl">
+          <label className="font-bold text-xl mb-1 text-white"> Enter nickname: </label>
+          <input
+            type="text"
+            value={nickname}
+            onChange={(event) => setNickname(event.target.value)}
+            className="focus:outline-none focus:border-slate-500 
+          focus:ring-1 focus:ring-slate-500 text-base"
+            placeholder="'Anonymous' if blank"
+          />
           <label className="font-bold text-xl mb-1 text-white"> Type room name: </label>
           <input onChange={(e) => setRoom(e.target.value)} value={room} className="focus:outline-none focus:border-slate-500 
-          focus:ring-1 focus:ring-slate-500"/>
+          focus:ring-1 focus:ring-slate-500" placeholder="Enter Room Name"/>
           <button
             onClick={() => {
               if (room.trim() !== "") { 
@@ -46,7 +56,7 @@ function App() {
           </button>
         </div>
       ) : (
-        <Chat room={room} setIsInChat={setIsInChat}/>
+        <Chat room={room} setIsInChat={setIsInChat} nickname={nickname} />
       )}
     </AppWrapper> 
   );
