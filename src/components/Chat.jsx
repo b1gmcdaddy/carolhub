@@ -12,9 +12,8 @@ import {
 import "../styles/Chat.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import ParticleBg from "./ParticleBg";
 
-export const Chat = ({ room }) => {
+export const Chat = ({ room, setIsInChat }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesRef = collection(db, "messages");
@@ -25,7 +24,7 @@ export const Chat = ({ room }) => {
       where("room", "==", room),
       orderBy("createdAt")
     );
-    const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
+    const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
       let messages = [];
       snapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
@@ -34,7 +33,7 @@ export const Chat = ({ room }) => {
       setMessages(messages);
     });
 
-    return () => unsuscribe();
+    return () => unsubscribe();
   }, []);
 
   const handleSubmit = async (event) => {
@@ -45,24 +44,32 @@ export const Chat = ({ room }) => {
       text: newMessage,
       createdAt: serverTimestamp(),
       user: auth.currentUser.displayName,
+      userPhotoURL: auth.currentUser.photoURL,
       room,
     });
-
     setNewMessage("");
+  };  
+
+  const backRoomChoice = async () => {
+    setIsInChat(false);
   };
 
   return (
     
-    <div className="chat-app">
-      <div className="header p-3 bg-custom-bg3">
+    <div className="chat-app flex-col font-sans ">
+      <div className="header p-3 bg-custom-bg3 relative text-center w-full flex">
         <h1 className="font-bold text-white text-xl">Welcome to: {room.toUpperCase()}</h1>
         <FontAwesomeIcon icon={faRightFromBracket} size="xl" className="text-hub-color 
-        cursor-pointer ml-28"/>
+        cursor-pointer absolute right-3" onClick={backRoomChoice}
+        title="Leave Room"/>
       </div>
-      <div className="messages">
+      <div className="messages p-3">
         {messages.map((message) => (
-          <div key={message.id} className="message">
-            <span className="user">{message.user}:</span> {message.text}
+          <div key={message.id} className="message flex items-center">
+            <img src={message.userPhotoURL} alt={message.user} className="user-photo w-8
+            h-8 rounded-full" />
+            <span className="user ml-1">{message.user}:</span> 
+            {message.text}
           </div>
         ))}
       </div>

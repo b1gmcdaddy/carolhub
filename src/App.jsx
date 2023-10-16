@@ -35,15 +35,18 @@ function App() {
           focus:ring-1 focus:ring-slate-500"/>
           <button
             onClick={() => {
-              setIsInChat(true);
-            }}
+              if (room.trim() !== "") { 
+                setIsInChat(true);
+              } else {
+                alert("Room Name CANNOT be blank.");
+              }}}
             className="bg-custom-bg text-black
             hover:bg-orange-400 font-bold"
           >Enter Chat
           </button>
         </div>
       ) : (
-        <Chat room={room} />
+        <Chat room={room} setIsInChat={setIsInChat}/>
       )}
     </AppWrapper> 
   );
