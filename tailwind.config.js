@@ -8,6 +8,7 @@ export default {
         "custom-bg2": "#808080",
         "custom-bg3": "#292929",
         "custom-bg4": "#1b1b1b",
+        "white-smoke": "#f5f5f5",
       },
       textColor: {
         "hub-color": "#ffa31a",

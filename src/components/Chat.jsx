@@ -9,7 +9,6 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-import "../styles/Chat.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
@@ -56,32 +55,34 @@ export const Chat = ({ room, setIsInChat }) => {
 
   return (
     
-    <div className="chat-app flex-col font-sans ">
-      <div className="header p-3 bg-custom-bg3 relative text-center w-full flex">
+    <div className="flex-col font-sans w-full bg-white-smoke rounded-lg">
+      <div className="p-3 bg-custom-bg3 relative text-center w-full flex">
         <h1 className="font-bold text-white text-xl">Welcome to: {room.toUpperCase()}</h1>
         <FontAwesomeIcon icon={faRightFromBracket} size="xl" className="text-hub-color 
         cursor-pointer absolute right-3" onClick={backRoomChoice}
         title="Leave Room"/>
       </div>
-      <div className="messages p-3">
+      <div className="p-4">
         {messages.map((message) => (
-          <div key={message.id} className="message flex items-center">
+          <div key={message.id} className="flex items-center mb-2.5">
             <img src={message.userPhotoURL} alt={message.user} className="user-photo w-8
             h-8 rounded-full" />
-            <span className="user ml-1">{message.user}:</span> 
+            <span className="user mx-2 font-bold">{message.user}:</span> 
             {message.text}
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit} className="new-message-form">
+      <form onSubmit={handleSubmit} className="new-message-form w-full flex relative p-2.5">
         <input
           type="text"
           value={newMessage}
           onChange={(event) => setNewMessage(event.target.value)}
-          className="new-message-input"
+          className="new-message-input flex-1 border-none 
+          outline-none bg-transparent p-2.5"
           placeholder="Type your message here..."
         />
-        <button type="submit" className="send-button text-black font-normal">
+        <button type="submit" className="send-button text-black font-semibold
+        bg-none outline-none text-base">
           Send
         </button>
       </form>
