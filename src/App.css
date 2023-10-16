@@ -25,12 +25,6 @@ body {
   flex-direction: column;
 }
 
-.room label {
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
 .room input {
   width: 200px;
   height: 30px;
@@ -42,7 +36,7 @@ body {
   margin: 5px;
 }
 .room button {
-  width: 210px;
+  width: 200px;
   height: 40px;
   border: none;
   border-radius: 6px;
@@ -50,11 +44,5 @@ body {
   font-size: 20px;
   text-align: center;
   margin: 5px;
-  background-color: #3b5998;
-  color: white;
   cursor: pointer;
-}
-
-.sign-out {
-  margin-top: 50px;
 }

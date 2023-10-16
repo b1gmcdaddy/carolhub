@@ -16,15 +16,17 @@ export const AppWrapper = ({ children, isAuth, setIsAuth, setIsInChat }) => {
 
   return (
     <div className="App">
-      <div className="app-header bg-green-900 w-full p-4 justify-center mb-52">
-        <h1 className="text-white tracking-widest text-center
-        text-4xl font-bold"> CAROLHUB </h1>
+      <div className="app-header bg-custom-bg4 w-full p-4 justify-center mb-52">
+        <h1 className="text-white text-center
+        text-4xl font-bold"> Carol <span className="rounded-sm bg-custom-bg px-1 text-black">hub</span> </h1>
       </div>
 
+      {/*Only when logged in*/}
       <div className="app-container">{children}</div>
       {isAuth && (
         <div className="sign-out">
-          <button onClick={signUserOut}> Sign Out</button>
+          <button onClick={signUserOut} className="bg-custom-bg4 text-white
+      w-24 h-12 rounded-lg text-lg absolute bottom-6 right-6 hover:bg-custom-bg3"> Logout</button>
         </div>
       )}
     </div>

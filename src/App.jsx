@@ -4,6 +4,7 @@ import { Auth } from "./components/Auth";
 import { AppWrapper } from "./components/AppWrapper";
 import Cookies from "universal-cookie";
 import "./App.css";
+import ParticleBg from "./components/ParticleBg";
 
 const cookies = new Cookies();
 
@@ -26,16 +27,19 @@ function App() {
 
   return (
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
+      <ParticleBg />
       {!isInChat ? (
-        <div className="room">
-          <label> Type room name: </label>
-          <input onChange={(e) => setRoom(e.target.value)} />
+        <div className="room bg-custom-bg4 p-8 shadow-xl shadow-orange-500/50">
+          <label className="font-bold text-xl mb-1 text-white"> Type room name: </label>
+          <input onChange={(e) => setRoom(e.target.value)} value={room} className="focus:outline-none focus:border-slate-500 
+          focus:ring-1 focus:ring-slate-500"/>
           <button
             onClick={() => {
               setIsInChat(true);
             }}
-          >
-            Enter Chat
+            className="bg-custom-bg text-black
+            hover:bg-orange-400 font-bold"
+          >Enter Chat
           </button>
         </div>
       ) : (

@@ -10,6 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import "../styles/Chat.css";
+import ParticleBg from "./ParticleBg";
 
 export const Chat = ({ room }) => {
   const [messages, setMessages] = useState([]);
