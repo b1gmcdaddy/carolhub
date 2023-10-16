@@ -4,7 +4,6 @@ import { Auth } from "./components/Auth";
 import { AppWrapper } from "./components/AppWrapper";
 import Cookies from "universal-cookie";
 import "./App.css";
-import ParticleBg from "./components/ParticleBg";
 
 const cookies = new Cookies();
 
@@ -21,7 +20,7 @@ function App() {
         setIsAuth={setIsAuth}
         setIsInChat={setIsInChat}
       >
-        <Auth setIsAuth={setIsAuth} />
+      <Auth setIsAuth={setIsAuth} />
       </AppWrapper>
     );
   }
