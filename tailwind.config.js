@@ -9,6 +9,9 @@ export default {
         "custom-bg3": "#292929",
         "custom-bg4": "#1b1b1b",
       },
+      textColor: {
+        "hub-color": "#ffa31a",
+      },
     },
   },
   plugins: [],

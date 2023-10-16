@@ -10,6 +10,8 @@ import {
   orderBy,
 } from "firebase/firestore";
 import "../styles/Chat.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import ParticleBg from "./ParticleBg";
 
 export const Chat = ({ room }) => {
@@ -50,9 +52,12 @@ export const Chat = ({ room }) => {
   };
 
   return (
+    
     <div className="chat-app">
-      <div className="header">
-        <h1>Welcome to: {room.toUpperCase()}</h1>
+      <div className="header p-3 bg-custom-bg3">
+        <h1 className="font-bold text-white text-xl">Welcome to: {room.toUpperCase()}</h1>
+        <FontAwesomeIcon icon={faRightFromBracket} size="xl" className="text-hub-color 
+        cursor-pointer ml-28"/>
       </div>
       <div className="messages">
         {messages.map((message) => (
@@ -69,10 +74,11 @@ export const Chat = ({ room }) => {
           className="new-message-input"
           placeholder="Type your message here..."
         />
-        <button type="submit" className="send-button">
+        <button type="submit" className="send-button text-black font-normal">
           Send
         </button>
       </form>
     </div>
+    
   );
 };

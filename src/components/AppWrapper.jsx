@@ -16,7 +16,7 @@ export const AppWrapper = ({ children, isAuth, setIsAuth, setIsInChat }) => {
 
   return (
     <div className="App">
-      <div className="app-header bg-custom-bg4 w-full p-4 justify-center mb-52">
+      <div className="app-header bg-custom-bg4 w-full p-4 justify-center">
         <h1 className="text-white text-center
         text-4xl font-bold"> Carol <span className="rounded-sm bg-custom-bg px-1 text-black">hub</span> </h1>
       </div>
